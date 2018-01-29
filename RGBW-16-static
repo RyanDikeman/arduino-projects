@@ -29,7 +29,7 @@ int wait = 100;
 
 void loop() {
 
-  led = 0; red = 255; green = 127; blue = 8; white = 10; 
+  led = 0; red = 128; green = 103; blue = 0; white = 0; 
   strip.setPixelColor(led, red, green , blue, white);
   delay(wait);
   strip.show();
@@ -54,7 +54,7 @@ void loop() {
   delay(wait);
    strip.show();
 
-  led = 5; red = 255; green = 16; blue = 8; white = 10; 
+  led = 5; red = 0; green = 95; blue = 128; white = 0; 
   strip.setPixelColor(led, red, green , blue, white);
   delay(wait);
    strip.show();
