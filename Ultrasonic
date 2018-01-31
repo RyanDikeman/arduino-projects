@@ -12,7 +12,7 @@
  
 int trigPin = 9;    //Trig - green Jumper
 int echoPin = 10;    //Echo - yellow Jumper
-long duration, cm, inches;
+long duration, cm, meters;
  
 void setup() {
   //Serial Port begin
@@ -42,13 +42,14 @@ void loop()
  
   // convert the time into a distance
   cm = (duration/2) / 29.1;
-  inches = (duration/2) / 74; 
+  meters = (duration/2) / 74; 
   
-  Serial.print(inches);
-  Serial.print("in, ");
+  Serial.print(meters);
+  Serial.print("m, ");
   Serial.print(cm);
   Serial.print("cm");
   Serial.println();
   
   delay(300);
 }
+
