@@ -1,0 +1,74 @@
+ #include "IRLibAll.h" // use the library for IR
+ 
+const int receiver = 11; // pin 1 of IR receiver to Arduino digital pin 11
+const int ledPin =  9;
+int Led = 4;
+int fadeValue;
+int lastCounter = 1;
+int counter = 0;
+ 
+IRrecvPCI irrecv(2); // create instance of 'irrecv'
+ 
+IRdecode results;
+ 
+void setup()
+ 
+{ 
+  Serial.begin(9600);
+  delay(2000); while (!Serial);
+  pinMode(ledPin, OUTPUT);
+  irrecv.enableIRIn();
+  Serial.println(F("Ready to receive IR signals"));
+}
+ 
+void loop()
+{
+  long detectathing = 4294967295;
+  //Continue looping until you get a complete signal received
+  if (irrecv.getResults()) {
+    results.decode();           //Decode it
+    results.dumpResults(false);  //Now print results. Use false for less detail
+    Serial.println(results.value);
+    detectathing = results.value; 
+    irrecv.enableIRIn();      //Restart receiver
+    
+    
+    
+  
+  }h
+   if (detectathing != 4294967295 and detectathing!=-1) {
+    counter ++;
+    counter %= 5;
+    
+   }
+
+
+ 
+  switch (counter + 1){    //depending on the counter the fadevalue is sent to the led
+   
+  case 1:
+  fadeValue = 0; 
+  break;
+   
+  case 2:
+  fadeValue = 50;
+  break;
+   
+  case 3:
+  fadeValue = 120;
+  break;
+   
+  case 4:
+  fadeValue = 185;
+  break;
+   
+  case 5:
+  fadeValue = 255;
+  break;
+   
+  }
+   
+  analogWrite(ledPin , fadeValue);    //set led with PWM value
+  lastCounter=counter;
+  
+}
